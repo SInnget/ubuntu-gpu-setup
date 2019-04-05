@@ -39,3 +39,7 @@ We currently only support the following cudnn-cuda pair:
 |7.5  | 9.0|
 |7.5  | 9.2|
 |7.5  | 10.0|
+
+
+#### Multiple CUDA environment
+These [site1](https://www.pugetsystems.com/print_pdf.php?url=https://www.pugetsystems.com/labs/hpc/How-To-Install-CUDA-10-together-with-9-2-on-Ubuntu-18-04-with-support-for-NVIDIA-20XX-Turing-GPUs-1236/&loaded=1), [site2](https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77) may helpful.
