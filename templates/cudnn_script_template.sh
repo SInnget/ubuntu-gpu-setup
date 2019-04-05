@@ -1,11 +1,11 @@
 #!/bin/bash
 
-curl -O https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libcudnn7-dev_7.4.2.24-1+cuda9.0_amd64.deb
-curl -O https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libcudnn7_7.4.2.24-1+cuda9.0_amd64.deb
+curl -O https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libcudnn7-dev_***cudnn-cuda***_amd64.deb
+curl -O https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libcudnn7_***cudnn-cuda***_amd64.deb
 
-sudo dpkg -i libcudnn7_7.4.2.24-1+cuda9.0_amd64.deb
-sudo dpkg -i libcudnn7-dev_7.4.2.24-1+cuda9.0_amd64.deb
-sudo dpkg -i libcudnn7-doc_7.4.2.24-1+cuda9.0_amd64.deb
+sudo dpkg -i libcudnn7_***cudnn-cuda***_amd64.deb
+sudo dpkg -i libcudnn7-dev_***cudnn-cuda***_amd64.deb
+sudo dpkg -i libcudnn7-doc_***cudnn-cuda***_amd64.deb
 
 echo >> ~/.bashrc '
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
