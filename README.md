@@ -3,7 +3,7 @@
 Provide some script for cuda-cudnn set up. Forked from [this](https://github.com/AndyYSWoo/Azure-GPU-Setup).
 
 We provide scripts to generate cuda-cudnn script.
-
+Somehow, you need to download *Code Samples and User Guide* from nvidia's [download site](https://developer.nvidia.com/rdp/cudnn-download) and put it in this folder, registration needed.
 #### Usage:
 - Generate Scripts with assigned version
 ```
