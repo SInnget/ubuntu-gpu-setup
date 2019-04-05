@@ -11,22 +11,28 @@ python3 gen_sh.py --cuda 9.0 --cudnn 7.4
 ```
 - Install CUDA
 
-
 ```
 sudo chmod +x gpu-setup-part1-cuda.sh
 ./gpu-setup-part1-cuda.sh
 ```
+It will reboot the machine once process completed. Have a drink, this may take *20~30 min*.
 - Install CUDNN
 ```
 sudo chmod +x gpu-setup-part2-cudnn.sh
 ./gpu-setup-part2-cudnn.sh
 ```
+This may take *~5 min*
+- Have a tensorflow test
+```
+python gpu-test.py
+```
 
 #### Footnotes:
-We use cuda 9.0 and cudnn 7.4 as basic example here. For the further combination,  information can be find [cudnn version](https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/), [cuda version](http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/).
+- We use cuda 9.0 and cudnn 7.4 as basic example here. For the further combination,  information can be find [cudnn version](https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/), [cuda version](http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/).
 
 
-We currently only support the following cudnn-cuda pair:
+- We currently only support the following cudnn-cuda pair:
+<p align="center">
 
 |CUDNN| CUDA|
 |:-----:|-----:|
@@ -40,6 +46,5 @@ We currently only support the following cudnn-cuda pair:
 |7.5  | 9.2|
 |7.5  | 10.0|
 
-
-#### Multiple CUDA environment
+- Multiple CUDA environment
 These [site1](https://www.pugetsystems.com/print_pdf.php?url=https://www.pugetsystems.com/labs/hpc/How-To-Install-CUDA-10-together-with-9-2-on-Ubuntu-18-04-with-support-for-NVIDIA-20XX-Turing-GPUs-1236/&loaded=1), [site2](https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77) may helpful.
