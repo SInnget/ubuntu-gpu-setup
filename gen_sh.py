@@ -36,7 +36,7 @@ def cuda_script_setup(cuda_version, ubuntu_version='1604'):
         cuda_script = fp.read()
     cuda_script = cuda_script.replace('***cuda-repo***', version_dict[cuda_version])
     cuda_script = cuda_script.replace('***cuda-version***', cuda_version.replace('.', '-'))
-    cuda_script = cuda_script.replace('***ubuntu-verion***', 'ubuntu'+ubuntu_version)
+    cuda_script = cuda_script.replace('***ubuntu-version***', 'ubuntu'+ubuntu_version)
     with open('gpu-setup-part1-cuda.sh', 'w') as fp:
         fp.write(cuda_script)
 
