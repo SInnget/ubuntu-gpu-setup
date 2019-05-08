@@ -7,7 +7,7 @@ Somehow, you need to download *Code Samples and User Guide* from nvidia's [downl
 #### Usage:
 - Generate Scripts with assigned version
 ```
-python3 gen_sh.py --cuda 9.0 --cudnn 7.4
+python3 gen_sh.py --cuda 9.0 --cudnn 7.4 --ubuntu 1604
 ```
 - Install CUDA
 
@@ -15,7 +15,7 @@ python3 gen_sh.py --cuda 9.0 --cudnn 7.4
 sudo chmod +x gpu-setup-part1-cuda.sh
 ./gpu-setup-part1-cuda.sh
 ```
-It will reboot the machine once process completed. Have a drink, this may take *20~30 min*.
+It will reboot the machine once process completed. Have a drink, this may take *20~30 min*, upto download time
 - Install CUDNN
 ```
 sudo chmod +x gpu-setup-part2-cudnn.sh
@@ -24,11 +24,11 @@ sudo chmod +x gpu-setup-part2-cudnn.sh
 This may take *~5 min*
 - Have a tensorflow test
 ```
-python gpu-test.py
+python3 gpu-test.py
 ```
 
 #### Footnotes:
-- We use cuda 9.0 and cudnn 7.4 as basic example here. For the further combination,  information can be find [cudnn version](https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/), [cuda version](http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/).
+- We use cuda 9.0 and cudnn 7.4 as basic example here. For the further combination,  information can be find [cudnn version](https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/), [cuda version](http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/). Or there ubuntu1804 version.
 
 
 - We currently only support the following cudnn-cuda pair:
