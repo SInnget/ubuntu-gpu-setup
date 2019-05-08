@@ -29,7 +29,7 @@ def cuda_script_setup(cuda_version):
     version_dict = {
         '9.0': 'cuda-repo-ubuntu1604_9.0.176-1_amd64.deb',
         '9.2': 'cuda-repo-ubuntu1604_9.2.148-1_amd64.deb',
-        '10.0': 'cuda-repo-ubuntu1604_10.0.130-1_amd64.deb'
+        '10.0': 'cuda-repo-ubuntu1604_10.1.105-1_amd64.deb'
     }
     with open('templates/cuda_script_template.sh') as fp:
         cuda_script = fp.read()
