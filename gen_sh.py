@@ -28,9 +28,9 @@ cudnn = ['7.0.5.15-1+cuda9.0',
 '7.5.0.56-1+cuda10.1']
 def cuda_script_setup(cuda_version, ubuntu_version='1604'):
     version_dict = {
-        '9.0': 'cuda-repo-ubuntu1604_9.0.176-1_amd64.deb',
-        '9.2': 'cuda-repo-ubuntu1604_9.2.148-1_amd64.deb',
-        '10.1': 'cuda-repo-ubuntu1604_10.1.105-1_amd64.deb'
+        '9.0': 'cuda-repo-***ubuntu-version***_9.0.176-1_amd64.deb',
+        '9.2': 'cuda-repo-***ubuntu-version***_9.2.148-1_amd64.deb',
+        '10.1': 'cuda-repo-***ubuntu-version***_10.1.105-1_amd64.deb'
     }
     with open('templates/cuda_script_template.sh') as fp:
         cuda_script = fp.read()
