@@ -41,10 +41,10 @@ python3 gpu-test.py
 |7.2  | 9.2|
 |7.4  | 9.0|
 |7.4  | 9.2|
-|7.4  | 10.0|
+|7.4  | 10.1|
 |7.5  | 9.0|
 |7.5  | 9.2|
-|7.5  | 10.0|
+|7.5  | 10.1|
 
 - Multiple CUDA environment
 These [site1](https://www.pugetsystems.com/print_pdf.php?url=https://www.pugetsystems.com/labs/hpc/How-To-Install-CUDA-10-together-with-9-2-on-Ubuntu-18-04-with-support-for-NVIDIA-20XX-Turing-GPUs-1236/&loaded=1), [site2](https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77) may helpful.
