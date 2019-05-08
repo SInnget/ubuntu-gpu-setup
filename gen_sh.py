@@ -2,8 +2,9 @@ import argparse
 
 def parse_arg():
     parser = argparse.ArgumentParser(description='generate cuda/cudnn set up script.')
-    parser.add_argument('--cuda', default='9.0')
-    parser.add_argument('--cudnn', default='7.4')
+    parser.add_argument('--cuda', default='9.0', choices=['9', '9.0', '9.2', '10.1'])
+    parser.add_argument('--cudnn', default='7.4', choices=['7', '7.0', '7.2', '7.4', '7.5'])
+    parser.add_argument('--ubuntu', default='1604', choices=['1604', '1804'])
     return parser.parse_args()
 
 VALID_PAIR=(('7.0', '9.0'),
@@ -25,7 +26,7 @@ cudnn = ['7.0.5.15-1+cuda9.0',
 '7.5.0.56-1+cuda9.0',
 '7.5.0.56-1+cuda9.2',
 '7.5.0.56-1+cuda10.1']
-def cuda_script_setup(cuda_version):
+def cuda_script_setup(cuda_version, ubuntu_version='1604'):
     version_dict = {
         '9.0': 'cuda-repo-ubuntu1604_9.0.176-1_amd64.deb',
         '9.2': 'cuda-repo-ubuntu1604_9.2.148-1_amd64.deb',
@@ -35,16 +36,18 @@ def cuda_script_setup(cuda_version):
         cuda_script = fp.read()
     cuda_script = cuda_script.replace('***cuda-repo***', version_dict[cuda_version])
     cuda_script = cuda_script.replace('***cuda-version***', cuda_version.replace('.', '-'))
+    cuda_script = cuda_script.replace('***ubuntu-verion***', 'ubuntu'+ubuntu_version)
     with open('gpu-setup-part1-cuda.sh', 'w') as fp:
         fp.write(cuda_script)
 
 
-def cudnn_script_setup(cudnn_version,cuda_version):
+def cudnn_script_setup(cudnn_version, cuda_version, ubuntu_version='1604'):
     cudnn_dict = dict(zip(VALID_PAIR, cudnn))
     with open('templates/cudnn_script_template.sh') as fp:
         data = fp.read()
     data = data.replace('***cudnn-cuda***', cudnn_dict[(cudnn_version,
                                                         cuda_version)])
+    data = data.replace('***ubuntu-version***', 'ubuntu'+ubuntu_version)
     with open('gpu-setup-part2-cudnn.sh', 'w') as fp:
         fp.write(data)
 
@@ -53,6 +56,7 @@ def main():
     args = parse_arg()
     cudnn_version = args.cudnn
     cuda_version = args.cuda
+    ubuntu_version = args.ubuntu
     if cuda_version == '10':
         cuda_version = '10.0'
     if cuda_version == '9':
@@ -61,8 +65,8 @@ def main():
         cudnn_version ='7.0'
     input_pair = (cudnn_version, cuda_version)
     assert input_pair in VALID_PAIR, 'We currently only support the following cudnn-cuda pair:\n{}.'.format(VALID_PAIR)
-    cuda_script_setup(cuda_version)
-    cudnn_script_setup(cudnn_version, cuda_version)
+    cuda_script_setup(cuda_version, ubuntu_version)
+    cudnn_script_setup(cudnn_version, cuda_version, ubuntu_version)
 
 
 if __name__=='__main__':

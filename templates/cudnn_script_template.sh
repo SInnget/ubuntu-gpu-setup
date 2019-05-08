@@ -1,7 +1,7 @@
 #!/bin/bash
 
-curl -O https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libcudnn7-dev_***cudnn-cuda***_amd64.deb
-curl -O https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1604/x86_64/libcudnn7_***cudnn-cuda***_amd64.deb
+curl -O https://developer.download.nvidia.com/compute/machine-learning/repos/***ubuntu-version***/x86_64/libcudnn7-dev_***cudnn-cuda***_amd64.deb
+curl -O https://developer.download.nvidia.com/compute/machine-learning/repos/***ubuntu-version***/x86_64/libcudnn7_***cudnn-cuda***_amd64.deb
 
 sudo dpkg -i libcudnn7_***cudnn-cuda***_amd64.deb
 sudo dpkg -i libcudnn7-dev_***cudnn-cuda***_amd64.deb
