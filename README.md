@@ -50,3 +50,11 @@ python3 gpu-test.py
 
 - Multiple CUDA environment
 These [site1](https://www.pugetsystems.com/print_pdf.php?url=https://www.pugetsystems.com/labs/hpc/How-To-Install-CUDA-10-together-with-9-2-on-Ubuntu-18-04-with-support-for-NVIDIA-20XX-Turing-GPUs-1236/&loaded=1), [site2](https://blog.kovalevskyi.com/multiple-version-of-cuda-libraries-on-the-same-machine-b9502d50ae77) may helpful.
+
+Once multiple cuda was installed, we may use the following code in bashrc/zshrc to control CUDA version.
+
+```
+export CUDA_HOME=/usr/local/cuda-9.0
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64
+export PATH=$PATH:$CUDA_HOME/bin
+```

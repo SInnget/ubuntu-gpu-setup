@@ -38,16 +38,17 @@ def cuda_script_setup(cuda_version, ubuntu_version='ubuntu1604'):
         cuda_script = fp.read()
     cuda_repo = Template(
         version_dict[cuda_version]).substitute(UBU_V=ubuntu_version)
-    # cuda_version
-    cuda_script = Template(cuda_script).substitute(cuda_repo=cuda_repo,
-                                         cuda_version=cuda_version.replace(
-                                             '.', '-'),
-                                         UBU_V=ubuntu_version)
+    cuda_script = Template(cuda_script).substitute(
+        cuda_repo=cuda_repo,
+        cuda_version=cuda_version.replace('.', '-'),
+        UBU_V=ubuntu_version)
     with open('gpu-setup-part1-cuda.sh', 'w') as fp:
         fp.write(cuda_script)
 
 
-def cudnn_script_setup(cudnn_version, cuda_version, ubuntu_version='ubuntu1604'):
+def cudnn_script_setup(cudnn_version,
+                       cuda_version,
+                       ubuntu_version='ubuntu1604'):
     cudnn_dict = dict(zip(VALID_PAIR, cudnn))
     with open('templates/cudnn_script_template.sh') as fp:
         data = fp.read()
@@ -61,20 +62,17 @@ def cudnn_script_setup(cudnn_version, cuda_version, ubuntu_version='ubuntu1604')
 def main():
     args = parse_arg()
     cudnn_version = args.cudnn
-    cuda_version = args.cuda
+    cuda_version = f'{float(args.cuda):.1f}'
+
     ubuntu_version = 'ubuntu' + args.ubuntu
-    if cuda_version == '10':
-        cuda_version = '10.0'
-    if cuda_version == '9':
-        cuda_version = '9.0'
-    if cudnn_version == '7':
-        cudnn_version = '7.0'
     input_pair = (cudnn_version, cuda_version)
     assert input_pair in VALID_PAIR, 'We currently only support the following cudnn-cuda pair:\n{}.'.format(
         VALID_PAIR)
-    cuda_script_setup(cuda_version, ubuntu_version)
-    cudnn_script_setup(cudnn_version, cuda_version, ubuntu_version)
-
+    try:
+        cuda_script_setup(cuda_version, ubuntu_version)
+        cudnn_script_setup(cudnn_version, cuda_version, ubuntu_version)
+    except:
+        pass
 
 if __name__ == '__main__':
     main()
