@@ -1,4 +1,4 @@
-# GPU-Setup for Ubuntu 16.04
+# GPU-Setup for Ubuntu 16.04/18.04
 
 Provide some script for cuda-cudnn set up. Forked from [this](https://github.com/AndyYSWoo/Azure-GPU-Setup).
 
@@ -58,3 +58,8 @@ export CUDA_HOME=/usr/local/cuda-9.0
 export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64
 export PATH=$PATH:$CUDA_HOME/bin
 ```
+
+### Tensorflow 2.0
+tensorflow 2.0 requires specific version of cuda/cudnn/nvidia-driver
+
+Check [this](https://www.tensorflow.org/install/gpu).
