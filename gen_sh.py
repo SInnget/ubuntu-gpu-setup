@@ -7,7 +7,7 @@ def parse_arg():
         description='generate cuda/cudnn set up script.')
     parser.add_argument('--cuda',
                         default='9.0',
-                        choices=['9', '9.0', '9.2', '10.0', '10', '10.1'])
+                        choices=['9', '9.0', '9.2', '10', '10.0', '10.1'])
     parser.add_argument('--cudnn',
                         default='7.4',
                         choices=['7', '7.0', '7.2', '7.4', '7.5'])
@@ -27,7 +27,7 @@ cudnn = [
 ]
 
 
-def cuda_script_setup(cuda_version, ubuntu_version='ubuntu1604'):
+def cuda_script_setup(cuda_version, ubuntu_version):
     version_dict = {
         '9.0': 'cuda-repo-${UBU_V}_9.0.176-1_amd64.deb',
         '9.2': 'cuda-repo-${UBU_V}_9.2.148-1_amd64.deb',
@@ -48,7 +48,7 @@ def cuda_script_setup(cuda_version, ubuntu_version='ubuntu1604'):
 
 def cudnn_script_setup(cudnn_version,
                        cuda_version,
-                       ubuntu_version='ubuntu1604'):
+                       ubuntu_version):
     cudnn_dict = dict(zip(VALID_PAIR, cudnn))
     with open('templates/cudnn_script_template.sh') as fp:
         data = fp.read()
@@ -61,9 +61,8 @@ def cudnn_script_setup(cudnn_version,
 
 def main():
     args = parse_arg()
-    cudnn_version = args.cudnn
+    cudnn_version = f'{float(args.cudnn):.1f}'
     cuda_version = f'{float(args.cuda):.1f}'
-
     ubuntu_version = 'ubuntu' + args.ubuntu
     input_pair = (cudnn_version, cuda_version)
     assert input_pair in VALID_PAIR, 'We currently only support the following cudnn-cuda pair:\n{}.'.format(

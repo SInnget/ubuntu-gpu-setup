@@ -11,7 +11,7 @@ curl -O http://developer.download.nvidia.com/compute/cuda/repos/$UBU_V/x86_64/$c
 sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/$UBU_V/x86_64/7fa2af80.pub
 sudo dpkg -i ./$cuda_repo
 sudo apt-get -y update
-sudo apt-get -y install cuda-libraries-$cuda_version
+sudo apt-get -y install cuda-$cuda_version
 echo >> ~/.bashrc '
 alias python=python3.6
 '
